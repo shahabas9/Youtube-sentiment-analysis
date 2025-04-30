@@ -77,13 +77,16 @@ def save_data(train_data :pd.DataFrame,test_data :pd.DataFrame,data_path :str)->
 
 def main():
     try:
-        params = load_params("../../params.yaml")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        params_path = os.path.abspath(os.path.join(script_dir, "../../params.yaml"))
+        params = load_params(params_path)
         test_size=params["data_ingestion"]["test_size"]
         url="https://raw.githubusercontent.com/Himanshu-1703/reddit-sentiment-analysis/refs/heads/main/data/reddit.csv"
         df = load_data(url)
         final_df = preprocess_data(df)
         train_data,test_data = train_test_split(final_df,test_size=test_size,random_state=42)
-        save_data(train_data,test_data,"../../data/")
+        data_path = os.path.abspath(os.path.join(script_dir, "../../data/"))
+        save_data(train_data,test_data,data_path)
     except Exception as e:
         logger.error(f"failed to complete data ingestion process {e}")
         raise
