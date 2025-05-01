@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 data/*
+aws/*
 # Distribution / packaging
 .Python
 build/
@@ -174,3 +175,4 @@ cython_debug/
 .pypirc
 /ligtgbm_model.pkl
 /tfidf_vectorizer.pkl
+/experiment_info.json

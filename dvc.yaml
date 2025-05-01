@@ -39,3 +39,17 @@ stages:
     outs :
     - ligtgbm_model.pkl
     - tfidf_vectorizer.pkl 
+
+  model_evaluation: 
+    
+    cmd : python src/model/model_evaluation.py
+    
+    deps:
+    - data/preprocessed/train.csv
+    - data/preprocessed/test.csv
+    - src/model/model_evaluation.py
+    - ligtgbm_model.pkl
+    - tfidf_vectorizer.pkl 
+    
+    outs :
+    - experiment_info.json
