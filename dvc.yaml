@@ -53,3 +53,12 @@ stages:
     
     outs :
     - experiment_info.json
+
+  
+  model_registration:
+
+    cmd:
+      python src/model/model_registry.py
+    deps:
+    - experiment_info.json
+    - src/model/model_registry.py
